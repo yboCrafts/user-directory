@@ -1,13 +1,11 @@
-const button = document.querySelector('input[type="button"]');
-const heading = document.querySelector('h1#_second_');
-const textInput = document.querySelector('#input-text');
+const form = document.querySelector('#userForm');
 
-button.addEventListener('click', (ev)=>{
-    if(textInput.value !== ''){
-        heading.textContent = textInput.value;   
-        ev.target.value = 'Clickity click';
-    }else{
-        alert('Type something inside the text form...');
-    }
-});
+const handleSubmit = function(ev) {
+    ev.preventDefault();
+    const heading = document.querySelector('h1');
+    const f = ev.target;
+    const userName = f.userName.value;
+    heading.textContent = userName;
+}
 
+form.addEventListener('submit', handleSubmit);
