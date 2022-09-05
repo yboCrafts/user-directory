@@ -9,20 +9,21 @@ const renderColor = function() {
     return colorDiv;
 }
 
+const renderListItem = function(itemName, itemValue) {
+    const listItem = document.createElement('li');
+    listItem.textContent = `${itemName + ':'} ${itemValue}`;
+    return listItem;
+}
+
 const handleSubmit = function(ev) {        
     ev.preventDefault();        
     const f = ev.target;
     const userName = f.userName.value;
     const age = f.age.value;   
 
-    const nameItem = document.createElement('li');
-    nameItem.textContent = `Name: ${userName}`;
-
-    const ageItem = document.createElement('li');
-    ageItem.textContent = `Age: ${age}`;    
-
-    const colorItem = document.createElement('li');
-    colorItem.textContent = 'Favorite Color:' 
+    const nameItem = renderListItem('Name', userName);
+    const ageItem = renderListItem('Age', age);
+    const colorItem = renderListItem('Favorite Color', '');  
     colorItem.appendChild(renderColor());
 
     const list = document.createElement('ul');
