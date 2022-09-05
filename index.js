@@ -6,20 +6,20 @@ const renderColor = function() {
     colorDiv.style.width = '6rem';
     colorDiv.style.height = '3rem';
     colorDiv.style.backgroundColor = favoriteColor;
+    
     return colorDiv;
 }
 
 const renderListItem = function(itemName, itemValue) {
     const listItem = document.createElement('li');
     listItem.textContent = `${itemName + ':'} ${itemValue}`;
+
     return listItem;
 }
 
-const handleSubmit = function(ev) {        
-    ev.preventDefault();        
-    const f = ev.target;
-    const userName = f.userName.value;
-    const age = f.age.value;   
+const renderList = function() {
+    const userName = document.querySelector('#userName').value;
+    const age = document.querySelector('#age').value;
 
     const nameItem = renderListItem('Name', userName);
     const ageItem = renderListItem('Age', age);
@@ -31,8 +31,15 @@ const handleSubmit = function(ev) {
     list.appendChild(ageItem);
     list.appendChild(colorItem);
 
+    return list;
+}
+
+const handleSubmit = function(ev) {        
+    ev.preventDefault();        
+    const f = ev.target;    
+
     const users = document.querySelector('#users');
-    users.appendChild(list);        
+    users.appendChild(renderList());        
 
     f.reset();
     f.userName.focus();
